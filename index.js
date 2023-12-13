@@ -6,13 +6,19 @@ if (elementsImput === null) {
 } else if (!elementsImput) {
     alert("nothing entered");
 } else {
+    let validation = false;
+    elementsImput.split(",").forEach(function (elem) {
+        if (!elem || !elem.trim()) {
+            validation = true;
+        }
+    });
     const userArr = elementsImput.split(",").map(function (elem) {
         return +elem;
     });
     const isnumber = userArr.some(function (elem) {
         return isNaN(elem);
     });
-    if (isnumber) {
+    if (isnumber || validation) {
         alert("not all elements are numbers!");
     } else {
         userArr.forEach(function (elem) {
